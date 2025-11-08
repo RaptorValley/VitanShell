@@ -5,3 +5,5 @@ project (VitanShell)
 aux_source_directory(. SRC_LIST)
 
 add_executable(VitanShell ${SRC_LIST})
+
+target_include_directories(VitanShell PUBLIC ${PROJECT_SOURCE_DIR}/include)

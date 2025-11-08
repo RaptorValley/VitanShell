@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ctime>
 #include <conio.h>
+#include "matcher.h"
 
 inline void sleep(int time) {
     clock_t head = clock();
@@ -34,7 +35,9 @@ int main() {
     while (true) {
         std::cout << "VitanShell>> ";
         std::cin >> command;
-        if (command == "exit")
-            return 0;
+        int status = matcher(command);
+        switch (status) {
+            case 1: exit(0);
+        }
     }
 }
