@@ -25,14 +25,12 @@ int matcher(std::string command) {
         // 关闭文件
         fin.close();
     */
+    std::cout << std::endl;
 
     if (command == "help" || command == "?") {
-        std::cout << "Welcom to VitanShell!" << std::endl;
-        std::cout << "Here are some common codes." << std::endl;
-        std::cout << "----------------------------------------" << std::endl;
-        std::cout << "help       Ask for helps." << std::endl;
-        std::cout << "info       Know something about this program." << std::endl;
-        std::cout << "applist    Look up available applications." << std::endl;
+        std::cout << "help       View the function of different commands." << std::endl;
+        std::cout << "info       Display the basic information of thos program." << std::endl;
+        std::cout << "applist    Print the list of installed applications." << std::endl;
         std::cout << "exit       Exit this program." << std::endl;
         std::cout << "rand       Get a random number." << std::endl;
         std::cout << "clr        Clean the screen." << std::endl;
@@ -45,12 +43,9 @@ int matcher(std::string command) {
         std::cout << "Insider: Build 1169\nChannel: Beta Edition" << std::endl;
         std::cout << "Current Build Date: 2025-11-08" << std::endl;
     } else if (command == "applist") {
-        std::cout << "These applications are available" << std::endl;
+        std::cout << "Name                         Code" << std::endl;
         std::cout << "----------------------------------------" << std::endl;
-        std::cout << "Name            Code" << std::endl;
-        std::cout << "Calculator      calc" << std::endl;
-        std::cout << "Command         cmd" << std::endl;
-        std::cout << "Powershell      powershell" << std::endl;
+        std::cout << "Command Prompt(System)       cmd" << std::endl;
     } else if (command == "rand") {
         std::cout << "VitanShell>>" << rand() << std::endl;
     } else if (command == "restart") {
