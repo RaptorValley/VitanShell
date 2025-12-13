@@ -5,28 +5,28 @@
 #include "matcher.h"
 
 int matcher(std::string command) {
-    /*
-        std::ifstream fin("register/PROGRAM");
-        // 若打开文件失败，则报错
-        if (!fin) {
-            std::cerr << "Errors ocurr when trying to open file \"register/PROGRAM\"..." << std::endl;
-            // return -1;
-        }
+    std::ifstream fin("PROGRAM");
+    // 若打开文件失败，则报错
+    if (!fin) {
+        std::cerr << "Errors ocurr when trying to open file \"PROGRAM\"..." << std::endl;
+        // return -1;
+    }
 
-        std::vector<std::string> program_list; // 程序列表
-        std::string line;                      // 从PROGRAM中读取的每一行
+    std::vector<std::string> program_list; // 程序列表
+    std::string line;                      // 从PROGRAM中读取的每一行
 
-        // 逐行读取PROGRAM
-        while (std::getline(fin, line)) {
-            if (line.empty()) continue;   // 跳过空行
-            program_list.push_back(line); // 将当前行追加到program_list末尾
-        }
+    // 逐行读取PROGRAM
+    while (std::getline(fin, line)) {
+        if (line.empty()) continue;   // 跳过空行
+        program_list.push_back(line); // 将当前行追加到program_list末尾
+    }
 
-        // 关闭文件
-        fin.close();
-    */
+    // 关闭文件
+    fin.close();
+
     std::cout << std::endl;
 
+    // 优先读取系统命令
     if (command == "help" || command == "?") {
         std::cout << "help       View the function of different commands." << std::endl;
         std::cout << "info       Display the basic information of thos program." << std::endl;
@@ -40,20 +40,31 @@ int matcher(std::string command) {
         std::cout << "\033c";
     } else if (command == "info") {
         std::cout << "VitanShell by Robert Hange" << std::endl;
-        std::cout << "Insider: Build 1169\nChannel: Beta Edition" << std::endl;
-        std::cout << "Current Build Date: 2025-11-08" << std::endl;
+        std::cout << "Insider Version: Build " << BUILD_NUMBER << std::endl;
+        std::cout << "Channel: Early Development" << std::endl;
+        std::cout << "Current Build Date: " << BUILD_DATE << std::endl;
     } else if (command == "applist") {
         std::cout << "Name                         Code" << std::endl;
         std::cout << "----------------------------------------" << std::endl;
         std::cout << "Command Prompt(System)       cmd" << std::endl;
     } else if (command == "rand") {
-        std::cout << "VitanShell>>" << rand() << std::endl;
+        std::cout << "VitanShell>> " << rand() << std::endl;
     } else if (command == "restart") {
         std::cout << "\033c";
     } else if (command == "exit") {
         return 1;
-    } else {
+    } /*else {
         std::cout << "\033[31mIllegal command.\033[0m" << std::endl;
+    }*/
+
+    // 然后再在program_list中搜寻
+    for (auto p : program_list) {
+        if (command == p) {
+            std::cout << "Successfully detect program \"" << p << "\"(pre-registered). Trying to load..." << std::endl;
+            std::cout << std::endl;
+            std::cout << p << ">> ";
+        }
     }
+
     std::cout << std::endl;
 }
